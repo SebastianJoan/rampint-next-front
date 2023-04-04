@@ -5,9 +5,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import logo from '../../../public/icons/logo.png';
+import { useAuth } from '@/hooks';
+
 
 
 export function Appbar(props) {
+
+  const  { logout }  = useAuth();
 
   const [IsMenuOpen, setIsMenuOpen] = useState(false);
     
@@ -43,15 +47,21 @@ export function Appbar(props) {
                                 <Link href="/servicios/list/" className="px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:text-white hover:bg-gray-800">
                                     Servicios
                                 </Link>
-                                <Link href="/facturas/list/" className="px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:text-white hover:bg-gray-800">
-                                    Facturas
+                                <Link href="/facturas_equipos/list/" className="px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:text-white hover:bg-gray-800">
+                                    F Equipos
                                 </Link>
-                                <Link href="/contratos/list/" className="px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:text-white hover:bg-gray-800">
-                                    Contratos
+                                <Link href="/facturas_servicios/list/" className="px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:text-white hover:bg-gray-800">
+                                    F Servicios
                                 </Link>
-                                <Link href="/login/list/" className="px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:text-white hover:bg-gray-800">
+                                <Link href="/contratos_equipos/list/" className="w-auto px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:text-white hover:bg-gray-800">
+                                     C Equipos
+                                </Link>
+                                <Link href="/contratos_servicios/list/" className="w-auto px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:text-white hover:bg-gray-800">
+                                    C Servicios
+                                </Link>
+                                <button onClick={logout} className="px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:text-white hover:bg-gray-800">
                                     Salir
-                                </Link>
+                                </button>
                             </div>
                         </div>
                         <div className='flex md:hidden'>
@@ -140,14 +150,19 @@ export function Appbar(props) {
                         </Link>
                     </div>
                     <div className='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
-                        <Link href="/pages/contratos" className='block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50'>
-                            Contratos
+                        <Link href="/pages/contratos_equipos" className='block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50'>
+                            Contratos Equipos
                         </Link>
                     </div>
                     <div className='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
-                        <Link href="/pages/login" className='block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50'>
-                            Salir
+                        <Link href="/pages/contratos_servicios" className='block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50'>
+                            Contratos Servicios
                         </Link>
+                    </div>
+                    <div className='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
+                        <button onClick = { logout } className='block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50'>
+                            Salir
+                        </button>
                     </div>
                 </div>
             </nav>

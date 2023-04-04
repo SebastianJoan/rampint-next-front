@@ -1,5 +1,4 @@
 import { useAuth } from "@/hooks";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 export function JoinLayout(props) {
@@ -14,20 +13,8 @@ export function JoinLayout(props) {
     }
 
     return (
-
-        <div>
-
-            <div>
-                <Link href="/">
-                    
-                </Link>
-                <Link href="/">
-                    
-                </Link>
-            </div>
-
-            <div>{children}</div>
-            <div></div>
-        </div>
+        <>
+            {children}
+        </>
     )
 }

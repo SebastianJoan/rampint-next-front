@@ -1,18 +1,13 @@
 import { authFetch, ENV } from "@/utils";
+const jwt = require('jsonwebtoken');
 
 export class User {
-    async getMe(){
+    async getMe(token_data){
         try{
-        
-            const url = `${ENV.API_URL}/${ENV.ENDPOINTS.USERS_ME}`
-            const response = await authFetch(url);
-            console.log(response)
-            const result = await response.json();
-
-            if( response.status != 200 ) throw result;
-
-            return result;
-            
+            const token = token_data; 
+            const decodedToken = jwt.decode(token);
+            const data = decodedToken;
+            return data.data;
         }catch(e){
             throw e;
         }

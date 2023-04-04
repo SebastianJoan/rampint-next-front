@@ -8,9 +8,9 @@ import logoBg from '../../../../public/img/login.png'
 export default function SignInPage() {
   return (
     <JoinLayout>
-        <div class=" mt-9 md:mt-0 flex flex-col md:flex-row h-screen bg-gray-200">
-            <div class="bg-white w-full md:w-1/3 flex justify-center items-center">
-                <div class="w-4/5">
+        <div className=" mt-9 md:mt-0 flex flex-col md:flex-row h-screen bg-gray-200">
+            <div className="bg-white w-full md:w-1/3 flex justify-center items-center">
+                <div className="w-4/5">
                     <Image
                         src={ logo }
                         alt="Rampint Image "
@@ -22,7 +22,7 @@ export default function SignInPage() {
                     <LoginForm/>
                 </div>
             </div>
-            <div class="hidden md:flex bg-cover bg-center w-full h-screen md:h-auto md:w-2/3">
+            <div className="hidden md:flex bg-cover bg-center w-full h-screen md:h-auto md:w-2/3">
                 <Image
                     src={ logoBg }
                     alt="img_background_login"

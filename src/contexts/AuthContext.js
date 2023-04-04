@@ -14,31 +14,30 @@ export function AuthProvider(props){
     const [token,  setToken] = useState(null)
     const [loading,  setLoading] = useState(true)
 
-    //useEffect(()=>{
-    //    ( async () => {
-    //        const token = tokenCtrl.getToken();
-    //
-    //        if (!token) {
-    //            logout();
-    //            setLoading(false);
-    //           return;
-    //        }
-    //
-    //        if(tokenCtrl.hasExpired(token)){
-    //            logout()
-    //        }else{
-    //            await login(token)
-    //       }
-    //   })();
-    //},[])
+    useEffect(()=>{
+       ( async () => {
+            const token = tokenCtrl.getToken();
+            if (!token) {
+               logout();
+               setLoading(false);
+              return;
+            }
+    
+            if(tokenCtrl.hasExpired(token)){
+               logout()
+            }else{
+               await login(token)
+            }
+      })();
+    },[])
 
     const login = async(token) => {
         try{
             tokenCtrl.setToken(token);
-            const response = UserCtrl.getMe()
-            setUser(response)
+            const dataUser = UserCtrl.getMe(token);
+            setUser(dataUser)
             setToken(token);
-            setLoading(false);//TODO: HACER EL SETLOADING FALSE
+            setLoading(false);
         }catch(error){
             console.error(error);
             setLoading(false);
@@ -66,11 +65,10 @@ export function AuthProvider(props){
         updateUser,
     };
 
-    //if (loading) return null
+    if (loading) return null
 
     return <AuthContext.Provider value={data}>
         {children}
     </AuthContext.Provider>
-
 
 }
